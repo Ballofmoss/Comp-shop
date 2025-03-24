@@ -4,10 +4,19 @@ from django.template import context
 
 
 def index(request):
-    context = {"title": "Home", "content": "Главная страница магазина home"}
+    context = {
+        "title": "Comp shop - Главная",
+        "content": "Главная страница магазина Comp-shop",
+    }
 
     return render(request, "main/index.html", context)
 
 
 def about(request):
-    return HttpResponse("About page")
+    context = {
+        "title": "Comp shop - о компании",
+        "content": "Страница ананас",
+        "text_on_page": "Мне люди должны сказать спасибо, что процеССор из моря достал",
+    }
+
+    return render(request, "main/about.html", context)
