@@ -115,7 +115,7 @@
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item text-white" href="#"
+                    <a class="dropdown-item text-white" href="{% url 'admin:index' %}"
                       >Админ панель</a
                     >
                   </li>
@@ -165,41 +165,13 @@
               />
             </button>
             <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
+              {% for category in categories %}
               <li>
                 <a class="dropdown-item text-white" href="{% url "products:index"%}"
-                  >Все товары</a
+                  >{{category.name}}</a
                 >
               </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "products:index"%}"
-                  >Кухня</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "products:index"%}"
-                  >Спальня</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "products:index"%}"
-                  >Гостинная</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "products:index"%}"
-                  >Офис</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "products:index"%}"
-                  >Фурнитура</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item text-white" href="{% url "products:index"%}"
-                  >Декор</a
-                >
-              </li>
+              {% endfor %}
             </ul>
           </div>
           <!-- Значек корзины, вызывает модальное окно -->

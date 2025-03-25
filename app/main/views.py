@@ -1,12 +1,16 @@
+from calendar import c
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.template import context
+
+from products.models import Categories
 
 
 def index(request):
+    categories = Categories.objects.all
     context = {
         "title": "Comp shop - Главная",
         "content": "Главная страница магазина Comp-shop",
+        "categories": categories,
     }
 
     return render(request, "main/index.html", context)
