@@ -1,4 +1,5 @@
 {% load static %}
+{% load products_tags %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -165,6 +166,7 @@
               />
             </button>
             <ul class="dropdown-menu bg-dark" data-bs-theme="dark">
+              {% tag_categories as categories %}
               {% for category in categories %}
               <li>
                 <a class="dropdown-item text-white" href="{% url "products:index"%}"
