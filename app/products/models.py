@@ -1,3 +1,4 @@
+from calendar import c
 from django.db import models
 
 
@@ -35,7 +36,7 @@ class Products(models.Model):
         default=0.00, max_digits=4, decimal_places=2, verbose_name="Скидка в %"
     )
     quantity = models.PositiveIntegerField(default=0, verbose_name="количество")
-    сategory = models.ForeignKey(
+    category = models.ForeignKey(
         to=Categories, on_delete=models.CASCADE, verbose_name="Категория"
     )
 
