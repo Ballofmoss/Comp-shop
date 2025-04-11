@@ -29,7 +29,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="id_first_name" class="form-label">Имя*:</label>
                             <input type="text" class="form-control" id="id_first_name"
-                                calue="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}"
+                                value="{% if form.first_name.value %}{{form.first_name.value}}{% endif %}"
                                 name="first_name" required>
                                 {% if form.first_name.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
@@ -92,6 +92,9 @@
                                     id="id_payment_on_get" value="1">
                                 <label class="form-check-label" for="id_payment_on_get">Наличными/картой
                                     при получении</label>
+                                    {% if form.payment_on_get.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.payment_on_get.errors}}</div>
+                                    {% endif %}
                             </div>
                         </div>
                     </div>
