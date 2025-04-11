@@ -1,5 +1,6 @@
 from calendar import c
 from django.db import models
+from django.urls import reverse
 
 
 class Categories(models.Model):
@@ -46,9 +47,14 @@ class Products(models.Model):
         verbose_name_plural = "Продукты"
         ordering = ("id",)
 
+    
     def __str__(self):
         return f"{self.name}, кол-во: {self.quantity}"
 
+    def get_absolute_url(self):
+        return reverse("catalog:product", kwargs={"product_slug": self.slug})
+    
+    
     def display_id(self):
         return f"{self.id:05}"
 
