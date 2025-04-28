@@ -1,25 +1,116 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load static %}
 
-{% block modal_cart %}
-{% include "includes/cart_button.html" %}
-{% endblock  %}
-
-{% block css %}  
-    <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}" /> 
-{% endblock %} 
-
-
-{% block content %} 
-    <h1 class="mt-5 pt-5"><strong>{{content}}</strong></h1> 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'deps/css/main_page.css' %}">
 {% endblock %}
 
-{% block footer %} 
-<footer class="py-4 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">
-        Copyright &copy; Home Python Hub Studio 2023
-      </p>
-    </div>
-  </footer>
+{% block content %}
+    <section class="hero-section">
+      <div class="banner-promo position-relative" style="background-color: #0d0d1a; border-radius: 12px; overflow: hidden;">
+        <div class="container py-4">
+          <div class="row align-items-center">
+            <div class="col-md-8 text-white py-3 position-relative z-2">
+              <span class="badge bg-danger mb-2" style="font-size: 1rem;">Акция</span>
+              <h2 class="fw-bold mb-3" style="font-size: 2.5rem;">Скидки до 15% на игровые ноутбуки</h2>
+              <p class="mb-4" style="font-size: 1.1rem;">Только до 31 декабря 2025 года</p>
+              <a href="{% url 'catalog:index' 'noutbuki' %}?on_sale=on&order_by=default" class="btn btn-warning btn-lg px-4 fw-bold">Купить со скидкой</a>
+            </div>
+            <div class="col-md-4 position-relative z-2">
+              <div class="text-center">
+                <div class="discount-circle mb-3" style="width: 120px; height: 120px; background: #ff4757; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold; border: 4px solid white;">
+                  -30%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="position-absolute top-0 end-0 w-50 h-100" style="background: url('{% static 'deps/images/banner-laptop.png' %}') no-repeat right center; background-size: contain; opacity: 0.8; z-index: 1;"></div>
+      </div>
+    </section>
+
+ 
+
+
+
+    <section class="categories-section py-5 bg-light"  style=" border-radius: 12px; overflow: hidden; margin-bottom: 20px; margin-top: 20px;">
+        <div class="container"  style="">
+            <h2 class="text-center mb-5">Категории товаров</h2>
+            <div class="row">
+                {% for category in categories %}
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="{% url 'catalog:index' category.slug %}" class="category-card">
+                        <div class="card h-100">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ category.name }}</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}
+
+
+
+    <style>
+      /* Герой-секция */
+.hero-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Карточки товаров */
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+    padding: 20px;
+}
+
+/* Категории */
+.category-card .card {
+    transition: all 0.3s;
+}
+
+.category-card:hover .card {
+    background-color: #f8f9fa;
+    transform: scale(1.03);
+}
+
+/* Социальные иконки */
+.social-links i {
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover i {
+    color: #0d6efd !important;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 3rem 0;
+    }
+    
+    .hero-section img {
+        margin-top: 2rem;
+    }
+}
+    </style>
+
+
